@@ -27,6 +27,12 @@ public class SudokuSolver {
     return solveRec(initialField, initialEmptyCells);
   }
 
+  /**
+   * Рекурсивный поиск решения.
+   * @param field текущее поле
+   * @param emptyCells список пустых клеток, отсортированный по количеству вариантов в них
+   * @return одно из возможных решений или null, если решения нет.
+   */
   private static Field solveRec(final Field field, final List<EmptyCell> emptyCells) {
     // Не осталось пустых клеток - решение найдено.
     if (emptyCells.size() == 0)
@@ -47,6 +53,7 @@ public class SudokuSolver {
     for (Integer variant : ecHead.variants) {
       final Field updatedField = field.setValue(ecHead.row, ecHead.col, variant);
 
+      // Подготовка списка пустых клеток для следующего шара рекурсии
       final List<EmptyCell> updatedEmptyCells = new ArrayList<>();
       for (EmptyCell ec : ecTail) {
         // Отбрасываем невозможные при данном выборе значения
@@ -78,6 +85,8 @@ public class SudokuSolver {
     for (int row = 0; row < Field.FIELD_SIZE; row++) {
       for (int col = 0; col < Field.FIELD_SIZE; col++) {
         if (initialField.getValue(row, col) == Field.EMPTY) {
+          // Изначально возможно все,
+          // но отбрасываем то, что уже есть в строке, столбце, квадрате.
           final List<Integer> variants = new ArrayList<>(Field.POSSIBLE_VALUES);
           variants.removeAll(initialField.getRowValues(row));
           variants.removeAll(initialField.getColValues(col));
