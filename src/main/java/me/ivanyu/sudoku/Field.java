@@ -111,8 +111,8 @@ final class Field {
     checkDimension(row);
     checkDimension(col);
 
-    int sqRow = row / LOCAL_SQUARE_SIZE;
-    int sqCol = col / LOCAL_SQUARE_SIZE;
+    final int sqRow = row / LOCAL_SQUARE_SIZE;
+    final int sqCol = col / LOCAL_SQUARE_SIZE;
 
     List<Integer> result = new ArrayList<>();
     for (int cellRow = sqRow * LOCAL_SQUARE_SIZE; cellRow < (sqRow + 1) * LOCAL_SQUARE_SIZE; cellRow++) {
@@ -134,10 +134,10 @@ final class Field {
     checkDimension(row2);
     checkDimension(col2);
 
-    int sqRow1 = row1 / LOCAL_SQUARE_SIZE;
-    int sqCol1 = col1 / LOCAL_SQUARE_SIZE;
-    int sqRow2 = row2 / LOCAL_SQUARE_SIZE;
-    int sqCol2 = col2 / LOCAL_SQUARE_SIZE;
+    final int sqRow1 = row1 / LOCAL_SQUARE_SIZE;
+    final int sqCol1 = col1 / LOCAL_SQUARE_SIZE;
+    final int sqRow2 = row2 / LOCAL_SQUARE_SIZE;
+    final int sqCol2 = col2 / LOCAL_SQUARE_SIZE;
 
     return row1 == row2 ||
         col1 == col2 ||
